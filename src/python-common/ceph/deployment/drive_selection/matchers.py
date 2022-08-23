@@ -54,6 +54,10 @@ class Matcher(object):
         # hence, make it a dict.
         disk = device.to_json()
 
+        # for testing purposes only
+        disk['sys_api']['actuators'] = None
+        disk['sys_api']['actuators'] = 2
+
         def findkeys(node: Union[list, dict], key_val: str) -> Iterator[str]:
             """ Find keys in non-flat dict recursively """
             if isinstance(node, list):
