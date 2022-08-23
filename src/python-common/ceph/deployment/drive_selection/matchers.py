@@ -168,6 +168,13 @@ class EqualityMatcher(Matcher):
         if not disk:
             return False
         disk_value = self._get_disk_key(disk)
+
+        # temporary way to identify logging messages
+        f = open("/home/mjenglish/ceph-logs.txt", "a")
+        f.write(str(disk_value) + " == " + str(self.value) + "\n")
+        f.write(str(disk_value == self.value) + "\n")
+        f.close()
+
         ret = disk_value == self.value
         if not ret:
             logger.debug('{} != {}'.format(disk_value, self.value))
